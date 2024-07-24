@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 336022551}
   - component: {fileID: 336022550}
+  - component: {fileID: 336022552}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -185,6 +186,29 @@ Transform:
   - {fileID: 549046959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &336022552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336022549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4994e16b9a79af4cba8a8613def86f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 7
+  groundDrag: 5
+  jumpForce: 0
+  jumpCooldown: 0
+  airMultiplier: 0
+  jumpKey: 32
+  playerHeight: 2
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
+  orientation: {fileID: 825174946}
 --- !u!1 &339853362
 GameObject:
   m_ObjectHideFlags: 0
@@ -15244,7 +15268,7 @@ GameObject:
   - component: {fileID: 1314777586}
   - component: {fileID: 1314777585}
   - component: {fileID: 1314777584}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Terain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25102,7 +25126,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1972269649}
   - component: {fileID: 1972269651}
-  - component: {fileID: 1972269652}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -25152,26 +25175,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1972269652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972269647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 502c0864b4e557a4ab5ca2bb9630b93d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 963194227}
-  walkSpeed: 4
-  runSpeed: 8
-  jumpPower: 6
-  gravity: 10
-  lookSpeed: 2
-  lookXLimit: 45
-  canMove: 1
 --- !u!1 &2059637934
 GameObject:
   m_ObjectHideFlags: 0
