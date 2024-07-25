@@ -30,7 +30,7 @@ public class FPSController : MonoBehaviour
     }
 
 
-   void Update()
+    void Update()
     {
 
         #region Handles Movment
