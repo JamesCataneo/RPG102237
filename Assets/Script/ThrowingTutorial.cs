@@ -7,7 +7,7 @@ public class ThrowingTutorial : MonoBehaviour
 {
     [Header("Reference")]
     public Transform cam;
-    public Transform attackpoint;
+    public Transform attackPoint;
     public GameObject objectToThrow;
 
     [Header("Settings")]
@@ -29,7 +29,14 @@ public class ThrowingTutorial : MonoBehaviour
     {
         if(Input.GetKeyDown(throwKey) && readyToThrow && totalThrows > 0)
         {
-
+            Throw();
         }
+    }
+    private void Throw()
+    {
+        // instantiate object to throw
+        GameObject projectile = Instantiate(objectToThrow.gameObject, attackPoint.position, cam.rotation);
+
+        // get rigidbody component
     }
 }
