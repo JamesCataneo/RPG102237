@@ -6,12 +6,14 @@ public class PlayerMovementAdvanced : MonoBehaviour
 {
     [Header("Movement")]
     private float moveSpeed;
+    private float desiredMoveSpeed;
+    private float lastDesiredMoveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
     public float slideSpeed;
-
-    private float desiredMoveSpeed;
-    private float lastDesiredMoveSpeed;
+    public float wallrunSpeed;
+    public float climbSpeed;
+    public float aurMinSpeed;
 
     public float speedIncreaseMultiplier;
     public float slopeIncreaseMultiplier;
@@ -43,8 +45,10 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
     private bool exitingSlope;
-    
 
+    [Header("Reference")]
+    public Climbing climbingScript;
+    
     public Transform orientation;
 
     float horizontalInput;
@@ -59,12 +63,17 @@ public class PlayerMovementAdvanced : MonoBehaviour
     {
         walking,
         sprinting,
+        wallrunning,
+        climbing,
         crouching,
         sliding,
         air
     }
 
     public bool sliding;
+    public bool crouching;
+    public bool wallrunning;
+    public bool climbing;
 
     private void Start()
     {
@@ -128,6 +137,20 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void StateHandler()
     {
+        // Mode - Climbing
+        if (climbing)
+        {
+            state = MovementState.climbing;
+            desiredMoveSpeed = climbSpeed;
+        }
+
+        // Mode - Wallrunning
+        else if (wallrunning)
+        {
+            state = MovementState.wallrunning;
+            desiredMoveSpeed = wallrunSpeed;
+        }
+
         // Mode - Sliding
         if (sliding)
         {
@@ -210,6 +233,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (climbingScript.exitingWall) return;
+
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
